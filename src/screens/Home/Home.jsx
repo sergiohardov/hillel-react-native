@@ -1,4 +1,5 @@
 import { View } from "react-native";
+import ProductTitle from "../../components/ProductTitle/ProductTitle";
 import ProductList from "../../components/ProductList/ProductList";
 
 import styles from "./styles";
@@ -8,6 +9,7 @@ export default function Home() {
   return (
     <View style={styles.container}>
       <ProductTopBar />
+      <ProductTitle />
     </View>
   );
 }
