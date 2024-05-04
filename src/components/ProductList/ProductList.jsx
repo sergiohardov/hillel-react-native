@@ -10,8 +10,9 @@ export default function ProductList() {
     <FlatList
       data={pizzaList}
       renderItem={({ item }) => <ProductItem itemData={item} />}
-      keyExtractor={(_, idx) => idx}
+      keyExtractor={(item, idx) => item.title + idx}
       contentContainerStyle={styles.container}
+      style={styles.list}
     />
   ) : (
     <Text>Pizza list empty.</Text>
