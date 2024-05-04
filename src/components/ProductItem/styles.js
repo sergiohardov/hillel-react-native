@@ -7,6 +7,7 @@ const styles = StyleSheet.create({
     height: 112,
     backgroundColor: colors.white,
     flexDirection: "row",
+    justifyContent: "space-between",
     gap: 50,
     borderRadius: 10,
     shadowColor: colors.black,
