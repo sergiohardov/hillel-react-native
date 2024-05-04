@@ -6,18 +6,20 @@ import {
   Text,
   TouchableWithoutFeedback,
 } from "react-native";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { AntDesign, EvilIcons } from "@expo/vector-icons";
 
 import styles from "./styles";
 import colors from "../../constants/colors";
+import SearchContext from "../../contexts/search";
 
 export default function ProductTopBar() {
-  const [searchText, setSearchText] = useState("");
+  const { searchValue, setSearchValue } = useContext(SearchContext);
+
   const [showSearch, setShowSearch] = useState(false);
   const [modalVisible, setModalVisible] = useState(false);
 
-  const handleSearchClear = () => setSearchText("");
+  const handleSearchClear = () => setSearchValue("");
   const handleBtnSearch = () => setShowSearch(!showSearch);
   const handleBtnFav = () => setModalVisible(true);
 
@@ -34,10 +36,10 @@ export default function ProductTopBar() {
             />
             <TextInput
               style={styles.inputField}
-              onChangeText={setSearchText}
-              value={searchText}
+              onChangeText={setSearchValue}
+              value={searchValue}
             />
-            {searchText.length ? (
+            {searchValue.length ? (
               <Pressable
                 onPress={handleSearchClear}
                 style={styles.inputBtnClose}
