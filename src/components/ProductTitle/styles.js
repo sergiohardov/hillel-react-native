@@ -1,12 +1,10 @@
 import { StyleSheet } from "react-native";
+import text from "../../constants/text";
 
 const styles = StyleSheet.create({
-  container: {
-    gap: 18,
-  },
-  list: {
-    marginHorizontal: -16,
-    paddingHorizontal: 16,
+  title: {
+    ...text.h2,
+    fontWeight: 'bold'
   },
 });
 
