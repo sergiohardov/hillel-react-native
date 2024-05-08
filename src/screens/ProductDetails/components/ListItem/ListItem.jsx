@@ -1,7 +1,8 @@
 import { View, Text, Image } from "react-native";
+
 import styles from "./styles";
 
-export default function ProductItem({ itemData }) {
+export default function ListItem({ itemData }) {
   const { title, description, price, image } = itemData;
 
   return (
