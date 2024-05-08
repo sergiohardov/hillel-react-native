@@ -10,6 +10,7 @@ import { useContext, useState } from "react";
 import { AntDesign, EvilIcons } from "@expo/vector-icons";
 
 import styles from "./styles";
+
 import colors from "../../../../constants/colors";
 import ProductDetailsContext from "../../../../contexts/ProductDetails";
 

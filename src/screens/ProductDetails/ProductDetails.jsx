@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { View } from "react-native";
 
+import styles from "./styles";
+
 import TopBar from "./components/TopBar/TopBar";
 import Title from "./components/Title/Title";
 import List from "./components/List/List";
-
-import styles from "./styles";
 
 import ProductDetailsContext from "../../contexts/ProductDetails";
 

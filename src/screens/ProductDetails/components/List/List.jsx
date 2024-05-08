@@ -3,10 +3,10 @@ import { Text, FlatList } from "react-native";
 
 import styles from "./styles";
 
+import ListItem from "../ListItem/ListItem";
 
 import pizzaList from "../../../../mock/pizzaList";
 import ProductDetailsContext from "../../../../contexts/ProductDetails";
-import ListItem from "../ListItem/ListItem";
 
 export default function List() {
   const { inputValue } = useContext(ProductDetailsContext);
