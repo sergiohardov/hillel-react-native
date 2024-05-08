@@ -1,23 +1,24 @@
 import { useContext } from "react";
 import { Text, FlatList } from "react-native";
-import ProductItem from "../ProductItem/ProductItem";
 
 import styles from "./styles";
 
-import pizzaList from "../../mock/pizzaList";
-import SearchContext from "../../contexts/search";
 
-export default function ProductList() {
-  const { searchValue } = useContext(SearchContext);
+import pizzaList from "../../../../mock/pizzaList";
+import ProductDetailsContext from "../../../../contexts/ProductDetails";
+import ListItem from "../ListItem/ListItem";
+
+export default function List() {
+  const { inputValue } = useContext(ProductDetailsContext);
 
   const filteredList = pizzaList.filter((item) =>
-    item.title.toLowerCase().includes(searchValue.toLowerCase())
+    item.title.toLowerCase().includes(inputValue.toLowerCase())
   );
 
   return pizzaList.length ? (
     <FlatList
       data={filteredList}
-      renderItem={({ item }) => <ProductItem itemData={item} />}
+      renderItem={({ item }) => <ListItem itemData={item} />}
       keyExtractor={(item, idx) => item.title + idx}
       contentContainerStyle={styles.container}
       style={styles.list}
