@@ -10,16 +10,16 @@ import { useContext, useState } from "react";
 import { AntDesign, EvilIcons } from "@expo/vector-icons";
 
 import styles from "./styles";
-import colors from "../../constants/colors";
-import SearchContext from "../../contexts/search";
+import colors from "../../../../constants/colors";
+import ProductDetailsContext from "../../../../contexts/ProductDetails";
 
-export default function ProductTopBar() {
-  const { searchValue, setSearchValue } = useContext(SearchContext);
+export default function TopBar() {
+  const { inputValue, setInputValue } = useContext(ProductDetailsContext);
 
   const [showSearch, setShowSearch] = useState(false);
   const [modalVisible, setModalVisible] = useState(false);
 
-  const handleSearchClear = () => setSearchValue("");
+  const handleSearchClear = () => setInputValue("");
   const handleBtnSearch = () => setShowSearch(!showSearch);
   const handleBtnFav = () => setModalVisible(true);
 
@@ -36,10 +36,10 @@ export default function ProductTopBar() {
             />
             <TextInput
               style={styles.inputField}
-              onChangeText={setSearchValue}
-              value={searchValue}
+              onChangeText={setInputValue}
+              value={inputValue}
             />
-            {searchValue.length ? (
+            {inputValue.length ? (
               <Pressable
                 onPress={handleSearchClear}
                 style={styles.inputBtnClose}
