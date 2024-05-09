@@ -24,9 +24,9 @@ const styles = StyleSheet.create({
     gap: 8,
   },
   paginationDot: {
-    width: 10,
-    height: 10,
-    borderRadius: 10,
+    width: 12,
+    height: 12,
+    borderRadius: 12,
     backgroundColor: colors.gray_light,
   },
 });
