@@ -1,8 +1,10 @@
 import { useContext } from "react";
 import { Alert } from "react-native";
 import ProductDetailsContext from "../../../contexts/ProductDetails";
+import AppContext from "../../../contexts/App";
 
 export default function useListItem() {
+  const { colorSheme } = useContext(AppContext);
   const { wishlist, setWishlist } = useContext(ProductDetailsContext);
 
   const addWishlistCallback = (id, title) => {
@@ -24,5 +26,5 @@ export default function useListItem() {
     }
   };
 
-  return { wishlist, setWishlist, addWishlistCallback };
+  return { colorSheme, wishlist, setWishlist, addWishlistCallback };
 }

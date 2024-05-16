@@ -1,26 +1,27 @@
 import { View, Text, Image, Pressable } from "react-native";
+import { AntDesign } from "@expo/vector-icons";
+
+import useListItem from "../../hooks/useListItem";
 
 import styles from "./styles";
-import { AntDesign } from "@expo/vector-icons";
 import colors from "../../../../constants/colors";
-import useListItem from "../../hooks/useListItem";
 
 export default function ListItem({ itemData }) {
   const { id, title, description, price, image } = itemData;
-
-  const { wishlist, addWishlistCallback } = useListItem();
+  const { colorSheme, wishlist, addWishlistCallback } = useListItem();
+  const propStyles = styles(colorSheme);
 
   const handleAddWishlist = (id, title) => addWishlistCallback(id, title);
 
   return (
-    <View style={styles.container}>
-      <View style={styles.textContainer}>
-        <Text style={styles.textTitle}>{title}</Text>
-        <Text style={styles.textDescription} numberOfLines={2}>
+    <View style={propStyles.container}>
+      <View style={propStyles.textContainer}>
+        <Text style={propStyles.textTitle}>{title}</Text>
+        <Text style={propStyles.textDescription} numberOfLines={2}>
           {description}
         </Text>
-        <View style={styles.priceContainer}>
-          <Text style={styles.textPrice}>${price}</Text>
+        <View style={propStyles.priceContainer}>
+          <Text style={propStyles.textPrice}>${price}</Text>
 
           <Pressable onPress={() => handleAddWishlist(id, title)}>
             <AntDesign
@@ -31,9 +32,9 @@ export default function ListItem({ itemData }) {
           </Pressable>
         </View>
       </View>
-      <View style={styles.mediaContainer}>
+      <View style={propStyles.mediaContainer}>
         <Image
-          style={styles.mediaImage}
+          style={propStyles.mediaImage}
           source={{
             uri: image,
           }}
