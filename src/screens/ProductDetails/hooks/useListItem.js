@@ -11,14 +11,14 @@ export default function useListItem() {
     if (wishlist.includes(id)) {
       Alert.alert(`Remove "${title}" from wishlist?`, "", [
         {
-          text: "Yes",
-          onPress: () =>
-            setWishlist((prevState) => prevState.filter((item) => item !== id)),
-        },
-        {
           text: "No",
           onPress: () => {},
           style: "destructive",
+        },
+        {
+          text: "Yes",
+          onPress: () =>
+            setWishlist((prevState) => prevState.filter((item) => item !== id)),
         },
       ]);
     } else {
