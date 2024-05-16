@@ -9,13 +9,17 @@ import {
 import { useContext, useState } from "react";
 import { AntDesign, EvilIcons } from "@expo/vector-icons";
 
-import styles from "./styles";
-
-import colors from "../../../../constants/colors";
+import AppContext from "../../../../contexts/App";
 import ProductDetailsContext from "../../../../contexts/ProductDetails";
 
+import styles from "./styles";
+import colors from "../../../../constants/colors";
+import theme from "../../../../constants/theme";
+
 export default function TopBar() {
+  const { colorSheme } = useContext(AppContext);
   const { inputValue, setInputValue } = useContext(ProductDetailsContext);
+  const propStyles = styles(colorSheme);
 
   const [showSearch, setShowSearch] = useState(false);
   const [modalVisible, setModalVisible] = useState(false);
@@ -26,24 +30,24 @@ export default function TopBar() {
 
   return (
     <>
-      <View style={styles.container}>
+      <View style={propStyles.container}>
         {showSearch ? (
-          <View style={styles.inputContainer}>
+          <View style={propStyles.inputContainer}>
             <EvilIcons
               name="search"
               size={24}
-              color={colors.black}
-              style={styles.inputIconSearch}
+              color={theme[colorSheme].primary}
+              style={propStyles.inputIconSearch}
             />
             <TextInput
-              style={styles.inputField}
+              style={propStyles.inputField}
               onChangeText={setInputValue}
               value={inputValue}
             />
             {inputValue.length ? (
               <Pressable
                 onPress={handleSearchClear}
-                style={styles.inputBtnClose}
+                style={propStyles.inputBtnClose}
               >
                 <EvilIcons name="close" size={24} color={colors.red} />
               </Pressable>
@@ -56,15 +60,19 @@ export default function TopBar() {
         </Pressable>
 
         <Pressable onPress={handleBtnSearch}>
-          <AntDesign name="search1" size={24} color={colors.black} />
+          <AntDesign
+            name="search1"
+            size={24}
+            color={theme[colorSheme].primary}
+          />
         </Pressable>
       </View>
 
       <Modal animationType="fade" transparent={true} visible={modalVisible}>
         <TouchableWithoutFeedback onPress={() => setModalVisible(false)}>
-          <View style={styles.modalContainerBg}>
+          <View style={propStyles.modalContainerBg}>
             <TouchableWithoutFeedback onPress={() => {}}>
-              <View style={styles.modalContainerBody}>
+              <View style={propStyles.modalContainerBody}>
                 <Pressable onPress={() => setModalVisible(false)}>
                   <Text>Close Modal</Text>
                 </Pressable>
