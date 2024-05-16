@@ -27,6 +27,7 @@ const styles = (colorSheme) =>
     },
     inputField: {
       ...text.p1,
+      color: theme[colorSheme].primary,
 
       height: "100%",
       backgroundColor: theme[colorSheme].primaryBackground,
