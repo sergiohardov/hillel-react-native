@@ -36,19 +36,6 @@ const styles = (colorSheme) =>
       borderRadius: 20,
       paddingHorizontal: 45,
     },
-    modalContainerBg: {
-      flex: 1,
-      backgroundColor: "rgba(0, 0, 0, 0.5)",
-    },
-    modalContainerBody: {
-      flex: 1,
-      justifyContent: "center",
-      alignItems: "center",
-      backgroundColor: colors.white,
-      marginTop: 450,
-      borderTopRightRadius: 20,
-      borderTopLeftRadius: 20,
-    },
   });
 
 export default styles;

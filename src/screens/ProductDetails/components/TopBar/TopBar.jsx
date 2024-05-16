@@ -1,13 +1,6 @@
-import {
-  View,
-  TextInput,
-  Pressable,
-  Modal,
-  Text,
-  TouchableWithoutFeedback,
-} from "react-native";
-import { AntDesign, EvilIcons } from "@expo/vector-icons";
-
+import { View, TextInput, Pressable } from "react-native";
+import { EvilIcons, Ionicons } from "@expo/vector-icons";
+import Modal from "../../../../components/Modal/Modal";
 import useTopBar from "../../hooks/useTopBar";
 
 import styles from "./styles";
@@ -54,23 +47,19 @@ export default function TopBar() {
         </View>
 
         <Pressable onPress={handleModalOpen}>
-          <AntDesign name="heart" size={24} color={colors.red} />
+          <Ionicons
+            name="settings-sharp"
+            size={24}
+            color={theme[colorSheme].primary}
+          />
         </Pressable>
       </View>
 
-      <Modal animationType="fade" transparent={true} visible={modalVisible}>
-        <TouchableWithoutFeedback onPress={handleModalClose}>
-          <View style={propStyles.modalContainerBg}>
-            <TouchableWithoutFeedback onPress={() => {}}>
-              <View style={propStyles.modalContainerBody}>
-                <Pressable onPress={handleModalClose}>
-                  <Text>Close Modal</Text>
-                </Pressable>
-              </View>
-            </TouchableWithoutFeedback>
-          </View>
-        </TouchableWithoutFeedback>
-      </Modal>
+      <Modal
+        title="Settings"
+        modalVisible={modalVisible}
+        handleModalClose={handleModalClose}
+      ></Modal>
     </>
   );
 }
