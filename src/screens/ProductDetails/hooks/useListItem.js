@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { Alert } from "react-native";
+import { Alert, Share } from "react-native";
 import ProductDetailsContext from "../../../contexts/ProductDetails";
 import AppContext from "../../../contexts/App";
 
@@ -26,5 +26,21 @@ export default function useListItem() {
     }
   };
 
-  return { themeMode, wishlist, setWishlist, addWishlistCallback };
+  const shareCallback = async (title, description) => {
+    try {
+      const result = await Share.share({
+        message: `${title} | ${description}`,
+      });
+    } catch (error) {
+      Alert.alert(error.message);
+    }
+  };
+
+  return {
+    themeMode,
+    wishlist,
+    setWishlist,
+    addWishlistCallback,
+    shareCallback,
+  };
 }

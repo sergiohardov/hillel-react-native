@@ -1,17 +1,20 @@
 import { View, Text, Image, Pressable } from "react-native";
-import { AntDesign } from "@expo/vector-icons";
+import { AntDesign, EvilIcons } from "@expo/vector-icons";
 
 import useListItem from "../../hooks/useListItem";
 
 import styles from "./styles";
 import colors from "../../../../constants/colors";
+import theme from "../../../../constants/theme";
 
 export default function ListItem({ itemData }) {
   const { id, title, description, price, image } = itemData;
-  const { themeMode, wishlist, addWishlistCallback } = useListItem();
+  const { themeMode, wishlist, addWishlistCallback, shareCallback } =
+    useListItem();
   const propStyles = styles(themeMode);
 
   const handleAddWishlist = (id, title) => addWishlistCallback(id, title);
+  const handleShare = (title, description) => shareCallback(title, description);
 
   return (
     <View style={propStyles.container}>
@@ -28,6 +31,14 @@ export default function ListItem({ itemData }) {
               name={wishlist.includes(id) ? "heart" : "hearto"}
               size={18}
               color={colors.red}
+            />
+          </Pressable>
+
+          <Pressable onPress={() => handleShare(title, description)}>
+            <EvilIcons
+              name="share-google"
+              size={24}
+              color={theme[themeMode].primary}
             />
           </Pressable>
         </View>
