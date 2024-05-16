@@ -1,4 +1,4 @@
-import { Text, FlatList, ActivityIndicator, View } from "react-native";
+import { Text, FlatList, ActivityIndicator } from "react-native";
 import ListItem from "../ListItem/ListItem";
 import useList from "../../hooks/useList";
 import styles from "./styles";
