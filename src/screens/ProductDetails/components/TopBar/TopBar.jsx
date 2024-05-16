@@ -18,12 +18,16 @@ export default function TopBar() {
     setInputValue,
     modalVisible,
     setModalVisible,
+    openUrlCallback,
   } = useTopBar();
   const propStyles = styles(themeMode);
 
   const handleSearchClear = () => setInputValue("");
   const handleModalOpen = () => setModalVisible(true);
   const handleModalClose = () => setModalVisible(false);
+
+  const handleCallBtn = (url) => openUrlCallback(url);
+  const handleMailBtn = (url) => openUrlCallback(url);
 
   return (
     <>
@@ -49,6 +53,18 @@ export default function TopBar() {
             </Pressable>
           ) : null}
         </View>
+
+        <Pressable onPress={() => handleCallBtn("tel:+123456789")}>
+          <Ionicons name="call" size={24} color={theme[themeMode].primary} />
+        </Pressable>
+
+        <Pressable onPress={() => handleMailBtn("mailto:support@expo.io")}>
+          <Ionicons name="mail" size={24} color={theme[themeMode].primary} />
+        </Pressable>
+
+        <Pressable onPress={() => handleMailBtn("https://google.com")}>
+          <Ionicons name="earth" size={24} color={theme[themeMode].primary} />
+        </Pressable>
 
         <Pressable onPress={handleModalOpen}>
           <Ionicons
