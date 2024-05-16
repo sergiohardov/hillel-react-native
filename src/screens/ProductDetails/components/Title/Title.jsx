@@ -5,8 +5,8 @@ import styles from "./styles";
 import AppContext from "../../../../contexts/App";
 
 export default function Title() {
-  const { colorSheme } = useContext(AppContext);
-  const propStyles = styles(colorSheme);
+  const { themeMode } = useContext(AppContext);
+  const propStyles = styles(themeMode);
 
   return <Text style={propStyles.title}>Pizza</Text>;
 }

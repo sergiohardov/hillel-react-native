@@ -2,12 +2,12 @@ import { StyleSheet } from "react-native";
 import text from "../../../../constants/text";
 import theme from "../../../../constants/theme";
 
-const styles = (colorSheme) =>
+const styles = (themeMode) =>
   StyleSheet.create({
     title: {
       ...text.h2,
       fontWeight: "bold",
-      color: theme[colorSheme].primary,
+      color: theme[themeMode].primary,
     },
   });
 

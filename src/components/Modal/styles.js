@@ -2,7 +2,7 @@ import { StyleSheet } from "react-native";
 import colors from "../../constants/colors";
 import text from "../../constants/text";
 
-const styles = (colorSheme) =>
+const styles = (themeMode) =>
   StyleSheet.create({
     modalContainerBg: {
       flex: 1,

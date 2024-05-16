@@ -9,13 +9,13 @@ import theme from "../../../../constants/theme";
 
 export default function TopBar() {
   const {
-    colorSheme,
+    themeMode,
     inputValue,
     setInputValue,
     modalVisible,
     setModalVisible,
   } = useTopBar();
-  const propStyles = styles(colorSheme);
+  const propStyles = styles(themeMode);
 
   const handleSearchClear = () => setInputValue("");
   const handleModalOpen = () => setModalVisible(true);
@@ -28,7 +28,7 @@ export default function TopBar() {
           <EvilIcons
             name="search"
             size={24}
-            color={theme[colorSheme].primary}
+            color={theme[themeMode].primary}
             style={propStyles.inputIconSearch}
           />
           <TextInput
@@ -50,7 +50,7 @@ export default function TopBar() {
           <Ionicons
             name="settings-sharp"
             size={24}
-            color={theme[colorSheme].primary}
+            color={theme[themeMode].primary}
           />
         </Pressable>
       </View>

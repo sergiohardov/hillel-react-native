@@ -6,13 +6,22 @@ import ProductDetails from "./src/screens/ProductDetails/ProductDetails";
 
 import AppContext from "./src/contexts/App";
 import theme from "./src/constants/theme";
+import {  useState } from "react";
 
 export default function App() {
   const colorSheme = useColorScheme();
-  const propStyles = styles(colorSheme);
+
+  const [themeMode, setThemeMode] = useState("light");
+
+
+  
+
+  const propStyles = styles(themeMode);
 
   return (
-    <AppContext.Provider value={{ colorSheme }}>
+    <AppContext.Provider
+      value={{ themeMode }}
+    >
       <SafeAreaView style={propStyles.container}>
         <StatusBar style="auto" />
         {/* <Home /> */}
@@ -22,10 +31,10 @@ export default function App() {
   );
 }
 
-const styles = (colorSheme) =>
+const styles = (themeMode) =>
   StyleSheet.create({
     container: {
       flex: 1,
-      backgroundColor: theme[colorSheme].primaryBackground,
+      backgroundColor: theme[themeMode].primaryBackground,
     },
   });

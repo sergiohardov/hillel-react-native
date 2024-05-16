@@ -8,8 +8,8 @@ import colors from "../../../../constants/colors";
 
 export default function ListItem({ itemData }) {
   const { id, title, description, price, image } = itemData;
-  const { colorSheme, wishlist, addWishlistCallback } = useListItem();
-  const propStyles = styles(colorSheme);
+  const { themeMode, wishlist, addWishlistCallback } = useListItem();
+  const propStyles = styles(themeMode);
 
   const handleAddWishlist = (id, title) => addWishlistCallback(id, title);
 

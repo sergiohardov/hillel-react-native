@@ -18,8 +18,8 @@ export default function Modal({
   handleModalClose = () => {},
   children,
 }) {
-  const { colorSheme } = useContext(AppContext);
-  const propStyles = styles(colorSheme);
+  const { themeMode } = useContext(AppContext);
+  const propStyles = styles(themeMode);
 
   return (
     <NativeModal animationType="fade" transparent={true} visible={modalVisible}>

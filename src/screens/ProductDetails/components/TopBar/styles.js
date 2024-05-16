@@ -3,7 +3,7 @@ import colors from "../../../../constants/colors";
 import text from "../../../../constants/text";
 import theme from "../../../../constants/theme";
 
-const styles = (colorSheme) =>
+const styles = (themeMode) =>
   StyleSheet.create({
     container: {
       flexDirection: "row",
@@ -27,10 +27,10 @@ const styles = (colorSheme) =>
     },
     inputField: {
       ...text.p1,
-      color: theme[colorSheme].primary,
+      color: theme[themeMode].primary,
 
       height: "100%",
-      backgroundColor: theme[colorSheme].primaryBackground,
+      backgroundColor: theme[themeMode].primaryBackground,
       borderWidth: 1,
       borderColor: colors.red,
       borderRadius: 20,

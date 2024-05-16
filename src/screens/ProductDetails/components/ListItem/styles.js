@@ -3,11 +3,11 @@ import colors from "../../../../constants/colors";
 import text from "../../../../constants/text";
 import theme from "../../../../constants/theme";
 
-const styles = (colorSheme) =>
+const styles = (themeMode) =>
   StyleSheet.create({
     container: {
       height: 112,
-      backgroundColor: theme[colorSheme].secondary,
+      backgroundColor: theme[themeMode].secondary,
       flexDirection: "row",
       justifyContent: "space-between",
       gap: 50,
@@ -33,7 +33,7 @@ const styles = (colorSheme) =>
     },
     textTitle: {
       ...text.h3,
-      color: theme[colorSheme].primary,
+      color: theme[themeMode].primary,
     },
     textDescription: {
       ...text.body,

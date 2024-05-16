@@ -4,7 +4,7 @@ import ProductDetailsContext from "../../../contexts/ProductDetails";
 import AppContext from "../../../contexts/App";
 
 export default function useListItem() {
-  const { colorSheme } = useContext(AppContext);
+  const { themeMode } = useContext(AppContext);
   const { wishlist, setWishlist } = useContext(ProductDetailsContext);
 
   const addWishlistCallback = (id, title) => {
@@ -26,5 +26,5 @@ export default function useListItem() {
     }
   };
 
-  return { colorSheme, wishlist, setWishlist, addWishlistCallback };
+  return { themeMode, wishlist, setWishlist, addWishlistCallback };
 }
