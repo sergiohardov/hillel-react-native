@@ -16,6 +16,7 @@ export default function ProductDetails() {
 
   const [listData, setListData] = useState([]);
   const [filteredList, setFilteredList] = useState([]);
+  const [wishlist, setWishlist] = useState([]);
 
   const [inputValue, setInputValue] = useState("");
   const [page, setPage] = useState(1);
@@ -34,6 +35,8 @@ export default function ProductDetails() {
         setListData,
         filteredList,
         setFilteredList,
+        wishlist,
+        setWishlist,
         inputValue,
         setInputValue,
         page,

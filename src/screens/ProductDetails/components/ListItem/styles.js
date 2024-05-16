@@ -2,7 +2,6 @@ import { StyleSheet } from "react-native";
 import colors from "../../../../constants/colors";
 import text from "../../../../constants/text";
 
-
 const styles = StyleSheet.create({
   container: {
     height: 112,
@@ -24,6 +23,11 @@ const styles = StyleSheet.create({
     flexShrink: 1,
     padding: 12,
     justifyContent: "space-between",
+  },
+  priceContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 10,
   },
   textTitle: {
     ...text.h3,
