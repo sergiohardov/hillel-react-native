@@ -21,50 +21,38 @@ export default function TopBar() {
   const { inputValue, setInputValue } = useContext(ProductDetailsContext);
   const propStyles = styles(colorSheme);
 
-  const [showSearch, setShowSearch] = useState(false);
   const [modalVisible, setModalVisible] = useState(false);
 
   const handleSearchClear = () => setInputValue("");
-  const handleBtnSearch = () => setShowSearch(!showSearch);
   const handleBtnFav = () => setModalVisible(true);
 
   return (
     <>
       <View style={propStyles.container}>
-        {showSearch ? (
-          <View style={propStyles.inputContainer}>
-            <EvilIcons
-              name="search"
-              size={24}
-              color={theme[colorSheme].primary}
-              style={propStyles.inputIconSearch}
-            />
-            <TextInput
-              style={propStyles.inputField}
-              onChangeText={setInputValue}
-              value={inputValue}
-            />
-            {inputValue.length ? (
-              <Pressable
-                onPress={handleSearchClear}
-                style={propStyles.inputBtnClose}
-              >
-                <EvilIcons name="close" size={24} color={colors.red} />
-              </Pressable>
-            ) : null}
-          </View>
-        ) : null}
+        <View style={propStyles.inputContainer}>
+          <EvilIcons
+            name="search"
+            size={24}
+            color={theme[colorSheme].primary}
+            style={propStyles.inputIconSearch}
+          />
+          <TextInput
+            style={propStyles.inputField}
+            onChangeText={setInputValue}
+            value={inputValue}
+          />
+          {inputValue.length ? (
+            <Pressable
+              onPress={handleSearchClear}
+              style={propStyles.inputBtnClose}
+            >
+              <EvilIcons name="close" size={24} color={colors.red} />
+            </Pressable>
+          ) : null}
+        </View>
 
         <Pressable onPress={handleBtnFav}>
           <AntDesign name="heart" size={24} color={colors.red} />
-        </Pressable>
-
-        <Pressable onPress={handleBtnSearch}>
-          <AntDesign
-            name="search1"
-            size={24}
-            color={theme[colorSheme].primary}
-          />
         </Pressable>
       </View>
 
