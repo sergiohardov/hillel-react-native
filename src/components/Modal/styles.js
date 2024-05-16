@@ -1,6 +1,7 @@
 import { StyleSheet } from "react-native";
 import colors from "../../constants/colors";
 import text from "../../constants/text";
+import theme from "../../constants/theme";
 
 const styles = (themeMode) =>
   StyleSheet.create({
@@ -11,7 +12,7 @@ const styles = (themeMode) =>
     modalContainerBody: {
       flex: 1,
       paddingHorizontal: 18,
-      backgroundColor: colors.white,
+      backgroundColor: theme[themeMode].primaryBackground,
       marginTop: 450,
       borderTopRightRadius: 20,
       borderTopLeftRadius: 20,
@@ -27,10 +28,11 @@ const styles = (themeMode) =>
     modalHeaderTitle: {
       ...text.h2,
       fontWeight: "bold",
+      color: theme[themeMode].primary,
     },
     modalContentContainer: {
       paddingVertical: 20,
-    }
+    },
   });
 
 export default styles;

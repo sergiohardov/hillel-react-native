@@ -11,6 +11,7 @@ import { EvilIcons } from "@expo/vector-icons";
 import AppContext from "../../contexts/App";
 import styles from "./styles";
 import colors from "../../constants/colors";
+import theme from "../../constants/theme";
 
 export default function Modal({
   title = "Modal Title",
@@ -33,7 +34,11 @@ export default function Modal({
                   onPress={handleModalClose}
                   style={propStyles.modalCloseBtn}
                 >
-                  <EvilIcons name="close" size={35} color={colors.black} />
+                  <EvilIcons
+                    name="close"
+                    size={35}
+                    color={theme[themeMode].primary}
+                  />
                 </Pressable>
               </View>
 
