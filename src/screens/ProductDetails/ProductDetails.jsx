@@ -20,6 +20,7 @@ export default function ProductDetails() {
 
   const [inputValue, setInputValue] = useState("");
   const [page, setPage] = useState(1);
+  const [modalVisible, setModalVisible] = useState(false);
 
   return (
     <ProductDetailsContext.Provider
@@ -41,6 +42,8 @@ export default function ProductDetails() {
         setInputValue,
         page,
         setPage,
+        modalVisible,
+        setModalVisible,
       }}
     >
       <View style={styles.container}>

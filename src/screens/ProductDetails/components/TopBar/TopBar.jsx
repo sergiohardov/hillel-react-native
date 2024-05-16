@@ -6,25 +6,27 @@ import {
   Text,
   TouchableWithoutFeedback,
 } from "react-native";
-import { useContext, useState } from "react";
 import { AntDesign, EvilIcons } from "@expo/vector-icons";
 
-import AppContext from "../../../../contexts/App";
-import ProductDetailsContext from "../../../../contexts/ProductDetails";
+import useTopBar from "../../hooks/useTopBar";
 
 import styles from "./styles";
 import colors from "../../../../constants/colors";
 import theme from "../../../../constants/theme";
 
 export default function TopBar() {
-  const { colorSheme } = useContext(AppContext);
-  const { inputValue, setInputValue } = useContext(ProductDetailsContext);
+  const {
+    colorSheme,
+    inputValue,
+    setInputValue,
+    modalVisible,
+    setModalVisible,
+  } = useTopBar();
   const propStyles = styles(colorSheme);
 
-  const [modalVisible, setModalVisible] = useState(false);
-
   const handleSearchClear = () => setInputValue("");
-  const handleBtnFav = () => setModalVisible(true);
+  const handleModalOpen = () => setModalVisible(true);
+  const handleModalClose = () => setModalVisible(false);
 
   return (
     <>
@@ -51,17 +53,17 @@ export default function TopBar() {
           ) : null}
         </View>
 
-        <Pressable onPress={handleBtnFav}>
+        <Pressable onPress={handleModalOpen}>
           <AntDesign name="heart" size={24} color={colors.red} />
         </Pressable>
       </View>
 
       <Modal animationType="fade" transparent={true} visible={modalVisible}>
-        <TouchableWithoutFeedback onPress={() => setModalVisible(false)}>
+        <TouchableWithoutFeedback onPress={handleModalClose}>
           <View style={propStyles.modalContainerBg}>
             <TouchableWithoutFeedback onPress={() => {}}>
               <View style={propStyles.modalContainerBody}>
-                <Pressable onPress={() => setModalVisible(false)}>
+                <Pressable onPress={handleModalClose}>
                   <Text>Close Modal</Text>
                 </Pressable>
               </View>
