@@ -1,4 +1,4 @@
-import { View, TextInput, Pressable } from "react-native";
+import { View, TextInput, Pressable, Text, Switch } from "react-native";
 import { EvilIcons, Ionicons } from "@expo/vector-icons";
 import Modal from "../../../../components/Modal/Modal";
 import useTopBar from "../../hooks/useTopBar";
@@ -10,6 +10,10 @@ import theme from "../../../../constants/theme";
 export default function TopBar() {
   const {
     themeMode,
+    autoTheme,
+    setAutoTheme,
+    darkMode,
+    setDarkMode,
     inputValue,
     setInputValue,
     modalVisible,
@@ -59,7 +63,26 @@ export default function TopBar() {
         title="Settings"
         modalVisible={modalVisible}
         handleModalClose={handleModalClose}
-      ></Modal>
+      >
+        <View style={propStyles.modalContainer}>
+          <View style={propStyles.modalSettingContainer}>
+            <Text style={propStyles.modalSettingText}>Auto detect theme</Text>
+            <Switch
+              onValueChange={setAutoTheme}
+              value={autoTheme}
+              disabled={darkMode}
+            />
+          </View>
+          <View style={propStyles.modalSettingContainer}>
+            <Text style={propStyles.modalSettingText}>Enable dark mode</Text>
+            <Switch
+              onValueChange={setDarkMode}
+              value={darkMode}
+              disabled={autoTheme}
+            />
+          </View>
+        </View>
+      </Modal>
     </>
   );
 }

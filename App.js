@@ -6,24 +6,33 @@ import ProductDetails from "./src/screens/ProductDetails/ProductDetails";
 
 import AppContext from "./src/contexts/App";
 import theme from "./src/constants/theme";
-import {  useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function App() {
   const colorSheme = useColorScheme();
 
   const [themeMode, setThemeMode] = useState("light");
+  const [autoTheme, setAutoTheme] = useState(false);
+  const [darkMode, setDarkMode] = useState(false);
 
-
-  
+  useEffect(() => {
+    if (darkMode) {
+      setThemeMode("dark");
+    } else if (autoTheme) {
+      setThemeMode(colorSheme);
+    } else {
+      setThemeMode("light");
+    }
+  }, [autoTheme, darkMode, colorSheme]);
 
   const propStyles = styles(themeMode);
 
   return (
     <AppContext.Provider
-      value={{ themeMode }}
+      value={{ themeMode, autoTheme, setAutoTheme, darkMode, setDarkMode }}
     >
       <SafeAreaView style={propStyles.container}>
-        <StatusBar style="auto" />
+        <StatusBar style={theme[themeMode].statusBarStyle} />
         {/* <Home /> */}
         <ProductDetails />
       </SafeAreaView>

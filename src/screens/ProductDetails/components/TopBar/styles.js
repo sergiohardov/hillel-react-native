@@ -36,6 +36,18 @@ const styles = (themeMode) =>
       borderRadius: 20,
       paddingHorizontal: 45,
     },
+    modalContainer: {
+      gap: 10,
+    },
+    modalSettingContainer: {
+      flexDirection: "row",
+      alignItems: "center",
+      justifyContent: "space-between",
+      gap: 20,
+    },
+    modalSettingText: {
+      color: theme[themeMode].primary,
+    },
   });
 
 export default styles;
