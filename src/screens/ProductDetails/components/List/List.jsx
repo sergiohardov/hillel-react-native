@@ -1,27 +1,37 @@
-import { useContext } from "react";
-import { Text, FlatList } from "react-native";
-
+import { Text, FlatList, ActivityIndicator } from "react-native";
+import ListItem from "../ListItem/ListItem";
+import useList from "../../hooks/useList";
 import styles from "./styles";
 
-import ListItem from "../ListItem/ListItem";
-
-import pizzaList from "../../../../mock/pizzaList";
-import ProductDetailsContext from "../../../../contexts/ProductDetails";
-
 export default function List() {
-  const { inputValue } = useContext(ProductDetailsContext);
+  const {
+    listLoading,
+    refreshLoading,
+    additionalLoading,
+    filteredList,
+    onRefreshCallback,
+    endReachedCallback,
+  } = useList();
 
-  const filteredList = pizzaList.filter((item) =>
-    item.title.toLowerCase().includes(inputValue.toLowerCase())
-  );
+  const handleRefresh = () => onRefreshCallback();
+  const handleEndReached = () => endReachedCallback();
 
-  return pizzaList.length ? (
+  return listLoading ? (
+    <ActivityIndicator style={{ marginTop: "70%" }} />
+  ) : filteredList.length ? (
     <FlatList
       data={filteredList}
       renderItem={({ item }) => <ListItem itemData={item} />}
-      keyExtractor={(item, idx) => item.title + idx}
+      keyExtractor={(item) => item.id}
       contentContainerStyle={styles.container}
       style={styles.list}
+      refreshing={refreshLoading}
+      onEndReachedThreshold={0.2}
+      onEndReached={handleEndReached}
+      onRefresh={handleRefresh}
+      ListFooterComponent={() =>
+        additionalLoading ? <ActivityIndicator /> : null
+      }
     />
   ) : (
     <Text>Pizza list empty.</Text>
