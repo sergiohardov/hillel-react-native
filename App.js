@@ -1,12 +1,21 @@
+import { useEffect, useState } from "react";
 import { StatusBar } from "expo-status-bar";
-import { SafeAreaView, StyleSheet, useColorScheme } from "react-native";
+import { useColorScheme } from "react-native";
+import { NavigationContainer } from "@react-navigation/native";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { Ionicons } from "@expo/vector-icons";
 
-import Home from "./src/screens/Home/Home";
-import ProductDetails from "./src/screens/ProductDetails/ProductDetails";
+import HomeScreen from "./src/screens/Home/Home";
+import CartScreen from "./src/screens/Cart/CartScreen";
+import SavedScreen from "./src/screens/Saved/SavedScreen";
+import ProfileScreen from "./src/screens/Profile/ProfileScreen";
 
 import AppContext from "./src/contexts/App";
+import routes from "./src/constants/routes";
 import theme from "./src/constants/theme";
-import { useEffect, useState } from "react";
+import colors from "./src/constants/colors";
+
+const Tab = createBottomTabNavigator();
 
 export default function App() {
   const colorSheme = useColorScheme();
@@ -25,25 +34,59 @@ export default function App() {
     }
   }, [autoTheme, darkMode, colorSheme]);
 
-  const propStyles = styles(themeMode);
-
   return (
     <AppContext.Provider
       value={{ themeMode, autoTheme, setAutoTheme, darkMode, setDarkMode }}
     >
-      <SafeAreaView style={propStyles.container}>
-        <StatusBar style={theme[themeMode].statusBarStyle} />
-        {/* <Home /> */}
-        <ProductDetails />
-      </SafeAreaView>
+      <StatusBar style={theme[themeMode].statusBarStyle} />
+      <NavigationContainer>
+        <Tab.Navigator
+          sceneContainerStyle={{
+            backgroundColor: theme[themeMode].primaryBackground,
+          }}
+          screenOptions={({ route }) => ({
+            tabBarStyle: {
+              backgroundColor: theme[themeMode].secondary,
+            },
+            headerStyle: {
+              backgroundColor: 'transparent',
+            },
+            headerTitleStyle: {
+              color: theme[themeMode].primary,
+            },
+            tabBarIcon: ({ focused, color, size }) => {
+              let iconName;
+
+              switch (route.name) {
+                case routes.home:
+                  iconName = "home";
+                  break;
+                case routes.cart:
+                  iconName = "cart";
+                  break;
+                case routes.saved:
+                  iconName = "heart";
+                  break;
+                case routes.profile:
+                  iconName = "person";
+                  break;
+                default:
+                  iconName = "home";
+                  break;
+              }
+
+              return <Ionicons name={iconName} size={size} color={color} />;
+            },
+            tabBarActiveTintColor: colors.red,
+            tabBarInactiveTintColor: colors.gray_light,
+          })}
+        >
+          <Tab.Screen name={routes.home} component={HomeScreen} />
+          <Tab.Screen name={routes.cart} component={CartScreen} />
+          <Tab.Screen name={routes.saved} component={SavedScreen} />
+          <Tab.Screen name={routes.profile} component={ProfileScreen} />
+        </Tab.Navigator>
+      </NavigationContainer>
     </AppContext.Provider>
   );
 }
-
-const styles = (themeMode) =>
-  StyleSheet.create({
-    container: {
-      flex: 1,
-      backgroundColor: theme[themeMode].primaryBackground,
-    },
-  });
