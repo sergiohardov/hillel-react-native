@@ -1,38 +1,28 @@
-import { useEffect, useState } from "react";
 import { StatusBar } from "expo-status-bar";
-import { useColorScheme } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { Ionicons } from "@expo/vector-icons";
 
 import HomeScreen from "./src/screens/Home/HomeScreen";
 import CartScreen from "./src/screens/Cart/CartScreen";
 import SavedScreen from "./src/screens/Saved/SavedScreen";
 import ProfileScreen from "./src/screens/Profile/ProfileScreen";
 
+import useApp from "./src/hooks/useApp";
 import AppContext from "./src/contexts/App";
 import routes from "./src/constants/routes";
 import theme from "./src/constants/theme";
-import colors from "./src/constants/colors";
 
 const Tab = createBottomTabNavigator();
 
 export default function App() {
-  const colorSheme = useColorScheme();
-
-  const [themeMode, setThemeMode] = useState("light");
-  const [autoTheme, setAutoTheme] = useState(false);
-  const [darkMode, setDarkMode] = useState(false);
-
-  useEffect(() => {
-    if (darkMode) {
-      setThemeMode("dark");
-    } else if (autoTheme) {
-      setThemeMode(colorSheme);
-    } else {
-      setThemeMode("light");
-    }
-  }, [autoTheme, darkMode, colorSheme]);
+  const {
+    themeMode,
+    autoTheme,
+    setAutoTheme,
+    darkMode,
+    setDarkMode,
+    screenOptions,
+  } = useApp();
 
   return (
     <AppContext.Provider
@@ -44,42 +34,7 @@ export default function App() {
           sceneContainerStyle={{
             backgroundColor: theme[themeMode].primaryBackground,
           }}
-          screenOptions={({ route }) => ({
-            tabBarStyle: {
-              backgroundColor: theme[themeMode].secondary,
-            },
-            headerStyle: {
-              backgroundColor: 'transparent',
-            },
-            headerTitleStyle: {
-              color: theme[themeMode].primary,
-            },
-            tabBarIcon: ({ focused, color, size }) => {
-              let iconName;
-
-              switch (route.name) {
-                case routes.home:
-                  iconName = "home";
-                  break;
-                case routes.cart:
-                  iconName = "cart";
-                  break;
-                case routes.saved:
-                  iconName = "heart";
-                  break;
-                case routes.profile:
-                  iconName = "person";
-                  break;
-                default:
-                  iconName = "home";
-                  break;
-              }
-
-              return <Ionicons name={iconName} size={size} color={color} />;
-            },
-            tabBarActiveTintColor: colors.red,
-            tabBarInactiveTintColor: colors.gray_light,
-          })}
+          screenOptions={screenOptions}
         >
           <Tab.Screen name={routes.home} component={HomeScreen} />
           <Tab.Screen name={routes.cart} component={CartScreen} />
