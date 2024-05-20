@@ -5,7 +5,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Ionicons } from "@expo/vector-icons";
 
-import HomeScreen from "./src/screens/Home/Home";
+import HomeScreen from "./src/screens/Home/HomeScreen";
 import CartScreen from "./src/screens/Cart/CartScreen";
 import SavedScreen from "./src/screens/Saved/SavedScreen";
 import ProfileScreen from "./src/screens/Profile/ProfileScreen";

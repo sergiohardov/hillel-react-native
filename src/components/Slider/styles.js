@@ -7,7 +7,7 @@ const styles = StyleSheet.create({
   },
   slide: {
     backgroundColor: colors.gray_light,
-    height: 650,
+    height: 450,
     borderRadius: 10,
     justifyContent: "center",
     alignItems: "center",
