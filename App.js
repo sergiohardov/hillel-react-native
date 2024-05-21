@@ -8,6 +8,7 @@ import SavedScreen from "./src/screens/Saved/SavedScreen";
 import ProfileScreen from "./src/screens/Profile/ProfileScreen";
 
 import useApp from "./src/hooks/useApp";
+import useAppTheme from "./src/hooks/useAppTheme";
 import AppContext from "./src/contexts/App";
 import routes from "./src/constants/routes";
 import theme from "./src/constants/theme";
@@ -15,14 +16,9 @@ import theme from "./src/constants/theme";
 const Tab = createBottomTabNavigator();
 
 export default function App() {
-  const {
-    themeMode,
-    autoTheme,
-    setAutoTheme,
-    darkMode,
-    setDarkMode,
-    screenOptions,
-  } = useApp();
+  const { screenOptions } = useApp();
+  const { themeMode, autoTheme, setAutoTheme, darkMode, setDarkMode } =
+    useAppTheme();
 
   return (
     <AppContext.Provider
