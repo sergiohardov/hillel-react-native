@@ -1,37 +1,35 @@
-import { View, TextInput, Pressable, Text, Switch } from "react-native";
-import { EvilIcons, Ionicons } from "@expo/vector-icons";
-import Modal from "../../../../components/Modal/Modal";
-import useTopBar from "../../hooks/useTopBar";
+import { useContext } from "react";
+import { View, TextInput, Pressable } from "react-native";
+import { EvilIcons, MaterialIcons } from "@expo/vector-icons";
+
+import AppContext from "../../../../contexts/App";
+import SearchContext from "../../../../contexts/SearchContext";
 
 import styles from "./styles";
 import colors from "../../../../constants/colors";
 import theme from "../../../../constants/theme";
+import routes from "../../../../constants/routes";
 
-export default function TopBar() {
-  const {
-    themeMode,
-    autoTheme,
-    setAutoTheme,
-    darkMode,
-    setDarkMode,
-    inputValue,
-    setInputValue,
-    modalVisible,
-    setModalVisible,
-    openUrlCallback,
-  } = useTopBar();
+export default function TopBar({ navigation }) {
+  const { themeMode } = useContext(AppContext);
+  const { inputValue, setInputValue } = useContext(SearchContext);
+
   const propStyles = styles(themeMode);
 
+  const handleBtnBack = () => navigation.goBack();
   const handleSearchClear = () => setInputValue("");
-  const handleModalOpen = () => setModalVisible(true);
-  const handleModalClose = () => setModalVisible(false);
-
-  const handleCallBtn = (url) => openUrlCallback(url);
-  const handleMailBtn = (url) => openUrlCallback(url);
+  const handleBtnFilter = () => navigation.navigate(routes.filter);
 
   return (
     <>
       <View style={propStyles.container}>
+        <Pressable onPress={handleBtnBack}>
+          <MaterialIcons
+            name="arrow-back-ios"
+            size={24}
+            color={theme[themeMode].primary}
+          />
+        </Pressable>
         <View style={propStyles.inputContainer}>
           <EvilIcons
             name="search"
@@ -53,52 +51,10 @@ export default function TopBar() {
             </Pressable>
           ) : null}
         </View>
-
-        <Pressable onPress={() => handleCallBtn("tel:+123456789")}>
-          <Ionicons name="call" size={24} color={theme[themeMode].primary} />
-        </Pressable>
-
-        <Pressable onPress={() => handleMailBtn("mailto:support@expo.io")}>
-          <Ionicons name="mail" size={24} color={theme[themeMode].primary} />
-        </Pressable>
-
-        <Pressable onPress={() => handleMailBtn("https://google.com")}>
-          <Ionicons name="earth" size={24} color={theme[themeMode].primary} />
-        </Pressable>
-
-        <Pressable onPress={handleModalOpen}>
-          <Ionicons
-            name="settings-sharp"
-            size={24}
-            color={theme[themeMode].primary}
-          />
+        <Pressable onPress={handleBtnFilter}>
+          <MaterialIcons name="filter-list" size={24} color={colors.red} />
         </Pressable>
       </View>
-
-      <Modal
-        title="Settings"
-        modalVisible={modalVisible}
-        handleModalClose={handleModalClose}
-      >
-        <View style={propStyles.modalContainer}>
-          <View style={propStyles.modalSettingContainer}>
-            <Text style={propStyles.modalSettingText}>Auto detect theme</Text>
-            <Switch
-              onValueChange={setAutoTheme}
-              value={autoTheme}
-              disabled={darkMode}
-            />
-          </View>
-          <View style={propStyles.modalSettingContainer}>
-            <Text style={propStyles.modalSettingText}>Enable dark mode</Text>
-            <Switch
-              onValueChange={setDarkMode}
-              value={darkMode}
-              disabled={autoTheme}
-            />
-          </View>
-        </View>
-      </Modal>
     </>
   );
 }
