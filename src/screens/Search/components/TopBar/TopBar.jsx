@@ -1,7 +1,9 @@
 import { useContext } from "react";
 import { View, TextInput, Pressable } from "react-native";
 import { EvilIcons, MaterialIcons } from "@expo/vector-icons";
+import { useNavigation } from "@react-navigation/native";
 
+import BackButton from "../../../../components/Buttons/BackButton";
 import AppContext from "../../../../contexts/App";
 import SearchContext from "../../../../contexts/SearchContext";
 
@@ -9,7 +11,6 @@ import styles from "./styles";
 import colors from "../../../../constants/colors";
 import theme from "../../../../constants/theme";
 import routes from "../../../../constants/routes";
-import { useNavigation } from "@react-navigation/native";
 
 export default function TopBar() {
   const { themeMode } = useContext(AppContext);
@@ -25,13 +26,7 @@ export default function TopBar() {
   return (
     <>
       <View style={propStyles.container}>
-        <Pressable onPress={handleBtnBack}>
-          <MaterialIcons
-            name="arrow-back-ios"
-            size={24}
-            color={theme[themeMode].primary}
-          />
-        </Pressable>
+        <BackButton handleBtn={handleBtnBack} color={theme[themeMode].primary} />
         <View style={propStyles.inputContainer}>
           <EvilIcons
             name="search"

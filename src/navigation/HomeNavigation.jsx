@@ -1,8 +1,9 @@
-import { Pressable, Text } from "react-native";
+import { Text } from "react-native";
 import { useContext } from "react";
 import { useNavigation } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
+import BackButton from "../components/Buttons/BackButton";
 import AppContext from "../contexts/App";
 import routes from "../constants/routes";
 import theme from "../constants/theme";
@@ -71,9 +72,10 @@ export default function HomeNavigation() {
           headerShadowVisible: false,
           title: "Product Details",
           headerLeft: () => (
-            <Pressable onPress={() => navigation.goBack()}>
-              <Text>Back</Text>
-            </Pressable>
+            <BackButton
+              handleBtn={() => navigation.goBack()}
+              color={theme[themeMode].primary}
+            />
           ),
           headerRight: () => <Text>Fav</Text>,
         }}
@@ -83,6 +85,12 @@ export default function HomeNavigation() {
         component={FilterScreen}
         options={{
           headerShadowVisible: false,
+          headerLeft: () => (
+            <BackButton
+              handleBtn={() => navigation.goBack()}
+              color={theme[themeMode].primary}
+            />
+          ),
         }}
       />
     </HomeStack.Navigator>
