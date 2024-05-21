@@ -13,12 +13,17 @@ import AppContext from "./src/contexts/App";
 import routes from "./src/constants/routes";
 import theme from "./src/constants/theme";
 
+import useAppFonts from "./src/hooks/useAppFonts";
+
 const Tab = createBottomTabNavigator();
 
 export default function App() {
   const { screenOptions } = useApp();
   const { themeMode, autoTheme, setAutoTheme, darkMode, setDarkMode } =
     useAppTheme();
+  const { fontsLoaded, fontError } = useAppFonts();
+
+  if (!fontsLoaded && !fontError) return null;
 
   return (
     <AppContext.Provider

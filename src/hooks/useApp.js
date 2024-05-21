@@ -1,12 +1,19 @@
+import { useEffect } from "react";
 import { Ionicons } from "@expo/vector-icons";
+import * as SplashScreen from "expo-splash-screen";
+
 import useAppTheme from "./useAppTheme";
+import useAppFonts from "./useAppFonts";
 
 import routes from "../constants/routes";
 import colors from "../constants/colors";
 import theme from "../constants/theme";
 
+SplashScreen.preventAutoHideAsync();
+
 export default function useApp() {
   const { themeMode } = useAppTheme();
+  const { fontsLoaded, fontError } = useAppFonts();
 
   const screenOptions = ({ route }) => ({
     tabBarStyle: {
@@ -44,6 +51,14 @@ export default function useApp() {
     tabBarActiveTintColor: colors.red,
     tabBarInactiveTintColor: colors.gray_light,
   });
+
+  useEffect(() => {
+    (async () => {
+      if (fontsLoaded || fontError) {
+        await SplashScreen.hideAsync();
+      }
+    })();
+  }, [fontsLoaded, fontError]);
 
   return {
     screenOptions,
