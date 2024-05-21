@@ -9,7 +9,7 @@ import List from "./components/List/List";
 
 import SearchContext from "../../contexts/SearchContext";
 
-export default function SearchScreen({ navigation }) {
+export default function SearchScreen() {
   const [listLoading, setListLoading] = useState(false);
   const [refreshLoading, setRefreshLoading] = useState(false);
   const [additionalLoading, setAdditionalLoading] = useState(false);
@@ -48,7 +48,7 @@ export default function SearchScreen({ navigation }) {
     >
       <SafeAreaView style={styles.safeArea}>
         <View style={styles.container}>
-          <TopBar navigation={navigation} />
+          <TopBar />
           <Title />
           <List />
         </View>

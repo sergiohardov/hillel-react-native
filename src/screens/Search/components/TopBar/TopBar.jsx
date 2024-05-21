@@ -9,10 +9,12 @@ import styles from "./styles";
 import colors from "../../../../constants/colors";
 import theme from "../../../../constants/theme";
 import routes from "../../../../constants/routes";
+import { useNavigation } from "@react-navigation/native";
 
-export default function TopBar({ navigation }) {
+export default function TopBar() {
   const { themeMode } = useContext(AppContext);
   const { inputValue, setInputValue } = useContext(SearchContext);
+  const navigation = useNavigation();
 
   const propStyles = styles(themeMode);
 
