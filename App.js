@@ -52,7 +52,13 @@ export default function App() {
         }}
       />
       <HomeStack.Screen name={routes.filter} component={FilterScreen} />
-      <HomeStack.Screen name={routes.search} component={SearchScreen} />
+      <HomeStack.Screen
+        name={routes.search}
+        component={SearchScreen}
+        options={{
+          headerShown: false,
+        }}
+      />
     </HomeStack.Navigator>
   );
 

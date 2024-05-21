@@ -1,5 +1,5 @@
 import { useCallback, useContext, useEffect } from "react";
-import ProductDetailsContext from "../../../contexts/ProductDetails";
+import SearchContext from "../../../contexts/SearchContext";
 import {
   nextPizzaList,
   pizzaList,
@@ -23,7 +23,7 @@ export default function useList() {
     inputValue,
     page,
     setPage,
-  } = useContext(ProductDetailsContext);
+  } = useContext(SearchContext);
 
   useEffect(() => {
     setListLoading(true);

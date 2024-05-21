@@ -1,13 +1,13 @@
 import { useContext } from "react";
 import AppContext from "../../../contexts/App";
-import ProductDetailsContext from "../../../contexts/ProductDetails";
+import SearchContext from "../../../contexts/SearchContext";
 import { Alert, Linking } from "react-native";
 
 export default function useTopBar() {
   const { themeMode, autoTheme, setAutoTheme, darkMode, setDarkMode } =
     useContext(AppContext);
   const { inputValue, setInputValue, modalVisible, setModalVisible } =
-    useContext(ProductDetailsContext);
+    useContext(SearchContext);
 
   const openUrlCallback = async (url) => {
     const supported = await Linking.canOpenURL(url);
