@@ -7,6 +7,7 @@ const routes = {
   notification: "Notification",
   search: "Search",
   settings: "Settings",
+  details: "Details",
 };
 
 export default routes;
