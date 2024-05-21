@@ -9,6 +9,7 @@ import SavedScreen from "./src/screens/Saved/SavedScreen";
 import ProfileScreen from "./src/screens/Profile/ProfileScreen";
 import FilterScreen from "./src/screens/Filter/FilterScreen";
 import NotificationScreen from "./src/screens/Notification/NotificationScreen";
+import SearchScreen from "./src/screens/Search/SearchScreen";
 
 import useApp from "./src/hooks/useApp";
 import AppContext from "./src/contexts/App";
@@ -51,6 +52,7 @@ export default function App() {
         }}
       />
       <HomeStack.Screen name={routes.filter} component={FilterScreen} />
+      <HomeStack.Screen name={routes.search} component={SearchScreen} />
     </HomeStack.Navigator>
   );
 

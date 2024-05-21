@@ -5,6 +5,7 @@ const routes = {
   profile: "Profile",
   filter: "Filter",
   notification: "Notification",
+  search: "Search",
 };
 
 export default routes;
