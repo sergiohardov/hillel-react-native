@@ -22,7 +22,13 @@ export default function App() {
 
   return (
     <AppContext.Provider
-      value={{ themeMode, autoTheme, setAutoTheme, darkMode, setDarkMode }}
+      value={{
+        themeMode,
+        autoTheme,
+        setAutoTheme,
+        darkMode,
+        setDarkMode,
+      }}
     >
       <StatusBar style={theme[themeMode].statusBarStyle} />
       <NavigationContainer>

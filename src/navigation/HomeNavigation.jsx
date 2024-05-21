@@ -28,7 +28,6 @@ export default function HomeNavigation() {
     headerStyle: {
       backgroundColor: theme[themeMode].primaryBackground,
     },
-    headerShadowVisible: false,
     headerTitleStyle: {
       color: theme[themeMode].primary,
     },
@@ -49,7 +48,6 @@ export default function HomeNavigation() {
         component={NotificationScreen}
         options={{
           presentation: "modal",
-          headerShadowVisible: true,
         }}
       />
       <HomeStack.Screen
@@ -57,7 +55,6 @@ export default function HomeNavigation() {
         component={SettingsScreen}
         options={{
           presentation: "modal",
-          headerShadowVisible: true,
         }}
       />
       <HomeStack.Screen
@@ -71,6 +68,7 @@ export default function HomeNavigation() {
         name={routes.details}
         component={DetailsScreen}
         options={{
+          headerShadowVisible: false,
           title: "Product Details",
           headerLeft: () => (
             <Pressable onPress={() => navigation.goBack()}>
@@ -80,7 +78,13 @@ export default function HomeNavigation() {
           headerRight: () => <Text>Fav</Text>,
         }}
       />
-      <HomeStack.Screen name={routes.filter} component={FilterScreen} />
+      <HomeStack.Screen
+        name={routes.filter}
+        component={FilterScreen}
+        options={{
+          headerShadowVisible: false,
+        }}
+      />
     </HomeStack.Navigator>
   );
 }
