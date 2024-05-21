@@ -10,6 +10,7 @@ import ProfileScreen from "./src/screens/Profile/ProfileScreen";
 import FilterScreen from "./src/screens/Filter/FilterScreen";
 import NotificationScreen from "./src/screens/Notification/NotificationScreen";
 import SearchScreen from "./src/screens/Search/SearchScreen";
+import SettingsScreen from "./src/screens/Settings/SettingsScreen";
 
 import useApp from "./src/hooks/useApp";
 import AppContext from "./src/contexts/App";
@@ -46,6 +47,14 @@ export default function App() {
       <HomeStack.Screen
         name={routes.notification}
         component={NotificationScreen}
+        options={{
+          presentation: "modal",
+          headerShadowVisible: true,
+        }}
+      />
+      <HomeStack.Screen
+        name={routes.settings}
+        component={SettingsScreen}
         options={{
           presentation: "modal",
           headerShadowVisible: true,

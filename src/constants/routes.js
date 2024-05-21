@@ -6,6 +6,7 @@ const routes = {
   filter: "Filter",
   notification: "Notification",
   search: "Search",
+  settings: "Settings",
 };
 
 export default routes;

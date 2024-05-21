@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { View, Text, Pressable, TextInput } from "react-native";
-import { MaterialIcons, Feather } from "@expo/vector-icons";
+import { MaterialIcons, Feather, Ionicons } from "@expo/vector-icons";
 
 import AppContext from "../../../../contexts/App";
 import styles from "./styles";
@@ -13,6 +13,7 @@ export default function TopBar({ navigation }) {
   const propStyles = styles(themeMode);
 
   const handleBtnNotifications = () => navigation.navigate(routes.notification);
+  const handleBtnSettings = () => navigation.navigate(routes.settings);
   const handleBtnSearch = () => navigation.navigate(routes.search);
 
   return (
@@ -20,9 +21,19 @@ export default function TopBar({ navigation }) {
       <View style={propStyles.header}>
         <Text style={propStyles.title}>Explore Pizza Club</Text>
 
-        <Pressable onPress={handleBtnNotifications}>
-          <Feather name="bell" size={24} color={theme[themeMode].primary} />
-        </Pressable>
+        <View style={propStyles.controllsContainer}>
+          <Pressable onPress={handleBtnNotifications}>
+            <Feather name="bell" size={24} color={theme[themeMode].primary} />
+          </Pressable>
+
+          <Pressable onPress={handleBtnSettings}>
+            <Ionicons
+              name="settings-sharp"
+              size={24}
+              color={theme[themeMode].primary}
+            />
+          </Pressable>
+        </View>
       </View>
 
       <Pressable style={propStyles.inputContainer} onPress={handleBtnSearch}>

@@ -17,6 +17,10 @@ const styles = (themeMode) =>
       ...text.h1,
       color: theme[themeMode].primary,
     },
+    controllsContainer: {
+      flexDirection: "row",
+      gap: 10,
+    },
     inputContainer: {
       paddingHorizontal: 15,
       paddingVertical: 8,
