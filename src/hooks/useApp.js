@@ -12,10 +12,11 @@ import theme from "../constants/theme";
 SplashScreen.preventAutoHideAsync();
 
 export default function useApp() {
-  const { themeMode } = useAppTheme();
+  const { themeMode, autoTheme, setAutoTheme, darkMode, setDarkMode } =
+    useAppTheme();
   const { fontsLoaded, fontError } = useAppFonts();
 
-  const screenOptions = ({ route }) => ({
+  const AppTabOptions = ({ route }) => ({
     tabBarStyle: {
       backgroundColor: theme[themeMode].secondary,
     },
@@ -52,6 +53,20 @@ export default function useApp() {
     tabBarInactiveTintColor: colors.gray_light,
   });
 
+  const HomeStackOptions = () => ({
+    tabBarStyle: {
+      backgroundColor: theme[themeMode].primaryBackground,
+    },
+    headerStyle: {
+      backgroundColor: theme[themeMode].primaryBackground,
+    },
+    headerShadowVisible: false,
+    headerTitleStyle: {
+      color: theme[themeMode].primary,
+    },
+    contentStyle: { backgroundColor: theme[themeMode].primaryBackground },
+  });
+
   useEffect(() => {
     (async () => {
       if (fontsLoaded || fontError) {
@@ -61,6 +76,14 @@ export default function useApp() {
   }, [fontsLoaded, fontError]);
 
   return {
-    screenOptions,
+    fontsLoaded,
+    fontError,
+    themeMode,
+    autoTheme,
+    setAutoTheme,
+    darkMode,
+    setDarkMode,
+    AppTabOptions,
+    HomeStackOptions,
   };
 }
