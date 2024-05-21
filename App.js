@@ -37,7 +37,13 @@ export default function App() {
           }}
           screenOptions={screenOptions}
         >
-          <Tab.Screen name={routes.home} component={HomeScreen} />
+          <Tab.Screen
+            name={routes.home}
+            component={HomeScreen}
+            options={{
+              headerShown: false,
+            }}
+          />
           <Tab.Screen name={routes.cart} component={CartScreen} />
           <Tab.Screen name={routes.saved} component={SavedScreen} />
           <Tab.Screen name={routes.profile} component={ProfileScreen} />
