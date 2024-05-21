@@ -4,20 +4,22 @@ import { NavigationContainer, useNavigation } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
-import HomeScreen from "./src/screens/Home/HomeScreen";
-import CartScreen from "./src/screens/Cart/CartScreen";
-import SavedScreen from "./src/screens/Saved/SavedScreen";
-import ProfileScreen from "./src/screens/Profile/ProfileScreen";
-import FilterScreen from "./src/screens/Filter/FilterScreen";
-import NotificationScreen from "./src/screens/Notification/NotificationScreen";
-import SearchScreen from "./src/screens/Search/SearchScreen";
-import SettingsScreen from "./src/screens/Settings/SettingsScreen";
-import DetailsScreen from "./src/screens/Details/DetailsScreen";
-
 import useApp from "./src/hooks/useApp";
 import AppContext from "./src/contexts/App";
 import routes from "./src/constants/routes";
 import theme from "./src/constants/theme";
+
+import {
+  HomeScreen,
+  CartScreen,
+  SavedScreen,
+  ProfileScreen,
+  FilterScreen,
+  NotificationScreen,
+  SearchScreen,
+  SettingsScreen,
+  DetailsScreen,
+} from "./src/screens";
 
 const HomeStack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
