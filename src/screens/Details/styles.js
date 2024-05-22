@@ -6,6 +6,11 @@ import colors from "../../constants/colors";
 
 const styles = (themeMode) =>
   StyleSheet.create({
+    preloadContainer: {
+      flex: 1,
+      justifyContent: "center",
+      alignItems: "center",
+    },
     container: {
       flex: 1,
     },

@@ -1,26 +1,26 @@
-import { View, Text, ImageBackground, Pressable } from "react-native";
-import React, { useContext, useEffect, useState } from "react";
-import AppContext from "../../contexts/App";
-import { allPizza } from "../../mock/pizzaList";
-
-import styles from "./styles";
+import {
+  View,
+  Text,
+  ImageBackground,
+  Pressable,
+  ActivityIndicator,
+} from "react-native";
 import Counter from "./components/Counter/Counter";
 import Rating from "./components/Rating/Rating";
 import Param from "./components/Param/Param";
+import useDetails from "./hooks/useDetails";
+
+import styles from "./styles";
 
 export default function DetailsScreen({ route }) {
-  const [details, setDetails] = useState({});
-  const { themeMode } = useContext(AppContext);
-  const { productId } = route.params;
-
+  const { themeMode, details, inLoading } = useDetails(route);
   const propStyles = styles(themeMode);
 
-  useEffect(() => {
-    const details = allPizza.find((item) => item.id === productId);
-    setDetails(details);
-  }, []);
-
-  return Object.keys(details).length ? (
+  return inLoading ? (
+    <View style={propStyles.preloadContainer}>
+      <ActivityIndicator />
+    </View>
+  ) : Object.keys(details).length ? (
     <View style={propStyles.container}>
       <ImageBackground
         source={{
@@ -60,5 +60,9 @@ export default function DetailsScreen({ route }) {
         </Pressable>
       </View>
     </View>
-  ) : null;
+  ) : (
+    <View style={propStyles.preloadContainer}>
+      <Text>No data for product</Text>
+    </View>
+  );
 }
