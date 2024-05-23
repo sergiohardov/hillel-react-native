@@ -1,27 +1,27 @@
 const text = {
   h1: {
+    fontFamily: "WorkSans-Bold",
     fontSize: 25,
-    fontWeight: "bold",
   },
   h2: {
+    fontFamily: "WorkSans-Medium",
     fontSize: 18,
-    // fontWeight: 'medium',
   },
   h3: {
+    fontFamily: "WorkSans-Medium",
     fontSize: 16,
-    // fontWeight: 'medium',
   },
   p1: {
+    fontFamily: "WorkSans-Regular",
     fontSize: 15,
-    // fontWeight: 'regular',
   },
   p2: {
+    fontFamily: "WorkSans-Regular",
     fontSize: 14,
-    // fontWeight: 'regular',
   },
   body: {
+    fontFamily: "WorkSans-Regular",
     fontSize: 12,
-    // fontWeight: 'regular',
   },
 };
 

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { View } from "react-native";
+import { SafeAreaView, Text, View } from "react-native";
 
 import styles from "./styles";
 
@@ -7,9 +7,9 @@ import TopBar from "./components/TopBar/TopBar";
 import Title from "./components/Title/Title";
 import List from "./components/List/List";
 
-import ProductDetailsContext from "../../contexts/ProductDetails";
+import SearchContext from "../../contexts/SearchContext";
 
-export default function ProductDetails() {
+export default function SearchScreen() {
   const [listLoading, setListLoading] = useState(false);
   const [refreshLoading, setRefreshLoading] = useState(false);
   const [additionalLoading, setAdditionalLoading] = useState(false);
@@ -23,7 +23,7 @@ export default function ProductDetails() {
   const [modalVisible, setModalVisible] = useState(false);
 
   return (
-    <ProductDetailsContext.Provider
+    <SearchContext.Provider
       value={{
         listLoading,
         setListLoading,
@@ -46,11 +46,13 @@ export default function ProductDetails() {
         setModalVisible,
       }}
     >
-      <View style={styles.container}>
-        <TopBar />
-        <Title />
-        <List />
-      </View>
-    </ProductDetailsContext.Provider>
+      <SafeAreaView style={styles.safeArea}>
+        <View style={styles.container}>
+          <TopBar />
+          <Title />
+          <List />
+        </View>
+      </SafeAreaView>
+    </SearchContext.Provider>
   );
 }

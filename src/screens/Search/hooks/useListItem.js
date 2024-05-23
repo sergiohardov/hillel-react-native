@@ -1,11 +1,11 @@
 import { useContext } from "react";
 import { Alert, Share } from "react-native";
-import ProductDetailsContext from "../../../contexts/ProductDetails";
+import SearchContext from "../../../contexts/SearchContext";
 import AppContext from "../../../contexts/App";
 
 export default function useListItem() {
   const { themeMode } = useContext(AppContext);
-  const { wishlist, setWishlist } = useContext(ProductDetailsContext);
+  const { wishlist, setWishlist } = useContext(SearchContext);
 
   const addWishlistCallback = (id, title) => {
     if (wishlist.includes(id)) {
