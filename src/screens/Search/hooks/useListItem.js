@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { Alert, Share } from "react-native";
 import SearchContext from "../../../contexts/SearchContext";
-import AppContext from "../../../contexts/AppContext";
+import { AppContext } from "../../../contexts/AppContext";
 
 export default function useListItem() {
   const { themeMode } = useContext(AppContext);

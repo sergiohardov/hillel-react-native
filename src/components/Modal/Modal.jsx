@@ -8,7 +8,7 @@ import {
 } from "react-native";
 import { EvilIcons } from "@expo/vector-icons";
 
-import AppContext from "../../contexts/AppContext";
+import { AppContext } from "../../contexts/AppContext";
 import styles from "./styles";
 import colors from "../../constants/colors";
 import theme from "../../constants/theme";
