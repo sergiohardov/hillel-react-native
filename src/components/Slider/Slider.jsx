@@ -1,9 +1,9 @@
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { FlatList, ImageBackground, Pressable, View } from "react-native";
 
-import styles from "./styles";
 import sliderList from "../../mock/sliderList";
 import colors from "../../constants/colors";
+import styles from "./styles";
 
 const AUTOPLAY_INTERVAL = 2000;
 const SLIDE_GUTTER = 20;
@@ -16,18 +16,18 @@ export default function Slider() {
 
   const flatlistRef = useRef(null);
 
-  const handleScroll = (event) => {
+  const handleScroll = useCallback((event) => {
     const { contentOffset } = event.nativeEvent;
     const index = Math.round(
       contentOffset.x / event.nativeEvent.layoutMeasurement.width
     );
     setCurrentIndex(index);
-  };
+  }, []);
 
-  const handlePressDot = (index) => {
+  const handlePressDot = useCallback((index) => {
     setCurrentIndex(index);
     flatlistRef.current.scrollToIndex({ index, animated: true });
-  };
+  }, []);
 
   useEffect(() => {
     clearInterval(autoplayInterval);
