@@ -5,7 +5,7 @@ import { useNavigation } from "@react-navigation/native";
 
 import BackButton from "../../../../components/Buttons/BackButton";
 import { AppContext } from "../../../../contexts/AppContext";
-import SearchContext from "../../../../contexts/SearchContext";
+import { SearchContext } from "../../../../contexts/SearchContext";
 
 import styles from "./styles";
 import colors from "../../../../constants/colors";

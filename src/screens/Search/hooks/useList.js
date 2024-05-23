@@ -1,5 +1,5 @@
 import { useCallback, useContext, useEffect } from "react";
-import SearchContext from "../../../contexts/SearchContext";
+import { SearchContext } from "../../../contexts/SearchContext";
 import {
   nextPizzaList,
   pizzaList,
