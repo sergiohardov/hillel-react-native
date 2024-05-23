@@ -2,11 +2,9 @@ import { StatusBar } from "expo-status-bar";
 import { NavigationContainer } from "@react-navigation/native";
 
 import { AppProvider } from "./src/contexts/AppContext";
-import TabsNavigation from "./src/navigation/TabsNavigation";
-
 import useAppTheme from "./src/hooks/useAppTheme";
 import useAppFonts from "./src/hooks/useAppFonts";
-
+import TabsNavigation from "./src/navigation/TabsNavigation";
 import theme from "./src/constants/theme";
 
 export default function App() {
