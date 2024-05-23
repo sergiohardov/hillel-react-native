@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import AppContext from "../../../contexts/App";
+import AppContext from "../../../contexts/AppContext";
 import { allPizza } from "../../../mock/pizzaList";
 
 export default function useDetails(route) {

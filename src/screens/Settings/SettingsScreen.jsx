@@ -2,7 +2,7 @@ import { View, Text, Switch } from "react-native";
 import React, { useContext } from "react";
 
 import styles from "./styles";
-import AppContext from "../../contexts/App";
+import AppContext from "../../contexts/AppContext";
 
 export default function SettingsScreen() {
   const { themeMode, autoTheme, setAutoTheme, darkMode, setDarkMode } =

@@ -4,7 +4,7 @@ import { useNavigation } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 import BackButton from "../components/Buttons/BackButton";
-import AppContext from "../contexts/App";
+import AppContext from "../contexts/AppContext";
 import routes from "../constants/routes";
 import theme from "../constants/theme";
 

@@ -1,7 +1,7 @@
 import { StatusBar } from "expo-status-bar";
 import { NavigationContainer } from "@react-navigation/native";
 
-import { AppProvider } from "./src/contexts/App";
+import { AppProvider } from "./src/contexts/AppContext";
 import TabsNavigation from "./src/navigation/TabsNavigation";
 
 import useAppTheme from "./src/hooks/useAppTheme";

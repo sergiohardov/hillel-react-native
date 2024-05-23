@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { View, Text, Pressable, TextInput } from "react-native";
 import { MaterialIcons, Feather, Ionicons } from "@expo/vector-icons";
 
-import AppContext from "../../../../contexts/App";
+import AppContext from "../../../../contexts/AppContext";
 import styles from "./styles";
 import theme from "../../../../constants/theme";
 import colors from "../../../../constants/colors";
