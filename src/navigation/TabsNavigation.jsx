@@ -2,8 +2,8 @@ import { useContext } from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Ionicons } from "@expo/vector-icons";
 
+import { AppContext } from "../contexts/AppContext";
 import HomeNavigation from "./HomeNavigation";
-import AppContext from "../contexts/App";
 import colors from "../constants/colors";
 import theme from "../constants/theme";
 import routes from "../constants/routes";

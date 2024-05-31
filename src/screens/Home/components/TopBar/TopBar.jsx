@@ -1,8 +1,8 @@
-import { useContext } from "react";
-import { View, Text, Pressable, TextInput } from "react-native";
+import { useCallback, useContext } from "react";
+import { View, Text, Pressable } from "react-native";
 import { MaterialIcons, Feather, Ionicons } from "@expo/vector-icons";
 
-import AppContext from "../../../../contexts/App";
+import { AppContext } from "../../../../contexts/AppContext";
 import styles from "./styles";
 import theme from "../../../../constants/theme";
 import colors from "../../../../constants/colors";
@@ -12,9 +12,18 @@ export default function TopBar({ navigation }) {
   const { themeMode } = useContext(AppContext);
   const propStyles = styles(themeMode);
 
-  const handleBtnNotifications = () => navigation.navigate(routes.notification);
-  const handleBtnSettings = () => navigation.navigate(routes.settings);
-  const handleBtnSearch = () => navigation.navigate(routes.search);
+  const handleBtnNotifications = useCallback(
+    () => navigation.navigate(routes.notification),
+    []
+  );
+  const handleBtnSettings = useCallback(
+    () => navigation.navigate(routes.settings),
+    []
+  );
+  const handleBtnSearch = useCallback(
+    () => navigation.navigate(routes.search),
+    []
+  );
 
   return (
     <View style={propStyles.container}>

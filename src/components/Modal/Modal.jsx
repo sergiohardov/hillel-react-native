@@ -8,9 +8,8 @@ import {
 } from "react-native";
 import { EvilIcons } from "@expo/vector-icons";
 
-import AppContext from "../../contexts/App";
+import { AppContext } from "../../contexts/AppContext";
 import styles from "./styles";
-import colors from "../../constants/colors";
 import theme from "../../constants/theme";
 
 export default function Modal({

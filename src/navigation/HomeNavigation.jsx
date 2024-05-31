@@ -1,10 +1,10 @@
 import { Text } from "react-native";
-import { useContext } from "react";
+import { useCallback, useContext } from "react";
 import { useNavigation } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
+import { AppContext } from "../contexts/AppContext";
 import BackButton from "../components/Buttons/BackButton";
-import AppContext from "../contexts/App";
 import routes from "../constants/routes";
 import theme from "../constants/theme";
 
@@ -34,6 +34,8 @@ export default function HomeNavigation() {
     },
     contentStyle: { backgroundColor: theme[themeMode].primaryBackground },
   });
+
+  const handleGoBack = useCallback(() => navigation.goBack(), []);
 
   return (
     <HomeStack.Navigator screenOptions={HomeStackOptions}>
@@ -73,7 +75,7 @@ export default function HomeNavigation() {
           title: "Product Details",
           headerLeft: () => (
             <BackButton
-              handleBtn={() => navigation.goBack()}
+              handleBtn={handleGoBack}
               color={theme[themeMode].primary}
             />
           ),
@@ -87,7 +89,7 @@ export default function HomeNavigation() {
           headerShadowVisible: false,
           headerLeft: () => (
             <BackButton
-              handleBtn={() => navigation.goBack()}
+              handleBtn={handleGoBack}
               color={theme[themeMode].primary}
             />
           ),

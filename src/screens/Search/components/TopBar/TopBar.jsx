@@ -4,8 +4,8 @@ import { EvilIcons, MaterialIcons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 
 import BackButton from "../../../../components/Buttons/BackButton";
-import AppContext from "../../../../contexts/App";
-import SearchContext from "../../../../contexts/SearchContext";
+import { AppContext } from "../../../../contexts/AppContext";
+import { SearchContext } from "../../../../contexts/SearchContext";
 
 import styles from "./styles";
 import colors from "../../../../constants/colors";
@@ -26,7 +26,10 @@ export default function TopBar() {
   return (
     <>
       <View style={propStyles.container}>
-        <BackButton handleBtn={handleBtnBack} color={theme[themeMode].primary} />
+        <BackButton
+          handleBtn={handleBtnBack}
+          color={theme[themeMode].primary}
+        />
         <View style={propStyles.inputContainer}>
           <EvilIcons
             name="search"
